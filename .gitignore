@@ -1,0 +1,9 @@
+history
+ido.last
+elpa/
+
+# No temp files
+*~
+
+auto-save-list/
+saves/
