@@ -1,5 +1,4 @@
 ;; init.el -*- lexical-binding: t -*-
-;; gpg --homedir ~/.emacs.d/elpa/gnupg --receive-keys <RSA key hash in output>
 
 (setq gc-cons-threshold 32000000
       garbage-collection-messages t)
