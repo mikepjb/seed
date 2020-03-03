@@ -75,6 +75,18 @@
 	    (define-key ido-completion-map (kbd "C-w") 'backward-kill-word)
 	    (define-key ido-file-completion-map (kbd "C-w") 'ido-delete-backward-word-updir)))
 
+(defun code-config ()
+  (if (version<= "26.0.50" emacs-version)
+      (display-line-numbers-mode 1)
+    (linum-mode 1))
+  (set-indent 2))
+
+(defun default-config ()
+  (set-indent 2))
+
+(add-hook 'text-mode-hook 'default-config)
+(dolist (hook '(prog-mode-hook css-mode-hook)) (add-hook hook 'code-config))
+
 ;; third party code -> we might make IO calls, anything after here is expected to fail.
 (require 'package)
 (add-to-list 'package-archives
@@ -93,17 +105,11 @@
 (include markdown-mode)
 (include magit)
 
-(defun code-config ()
-  (if (version<= "26.0.50" emacs-version)
-      (display-line-numbers-mode 1)
-    (linum-mode 1))
-  (set-indent 2))
-
-(defun default-config ()
-  (set-indent 2))
-
-(add-hook 'text-mode-hook 'default-config)
-(dolist (hook '(prog-mode-hook css-mode-hook)) (add-hook hook 'code-config))
+(load-theme 'wombat t)
+;; wombat, another good default
+;; tango-dark default
+;; gruvbox?
+;; tomorrow theme?
 
 ;; (include display-line-number-mode)
 ;; (include interactive-haskell-mode)
