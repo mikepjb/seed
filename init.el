@@ -105,6 +105,13 @@
 (include markdown-mode)
 (include magit)
 
+(when (include web-mode)
+  (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode)))
+
+;; don't know how to make a localised variable an alias
+;; (when (include js2-mode)
+;;   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode)))
+
 (load-theme 'wombat t)
 ;; wombat, another good default
 ;; tango-dark default
